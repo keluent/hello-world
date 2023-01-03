@@ -33,6 +33,9 @@
          SetPixel( hdc, 700, 500, RGB(255,255,0) );
 
          // 恢复原来的画笔和画刷
+         
+         
+         https://stackoverflow.com/questions/18647053/sendinput-not-equal-to-pressing-key-manually-on-keyboard-in-c           //解决模拟按键消息被客户端程序阻塞丢弃
          SelectObject( hdc, hpen_old );
          SelectObject( hdc, hbrush_old );
 
