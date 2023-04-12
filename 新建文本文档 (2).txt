@@ -1,3 +1,4 @@
+c6c83f00-d8f0-11ed-afa1-0242ac120002
    vmess://ewoidiI6ICIyIiwKInBzIjogIjIzM3YyLmNvbV95YW5nbWluZ3l1LnRvcCIsCiJhZGQiOiAieWFuZ21pbmd5dS50b3AiLAoicG9ydCI6ICI0NDMiLAoiaWQiOiAiOGNjNDk0MzktY2JiNy00YzZiLWFiYTUtMzAyYzc0YWEyOGUzIiwKImFpZCI6ICIwIiwKIm5ldCI6ICJ3cyIsCiJ0eXBlIjogIm5vbmUiLAoiaG9zdCI6ICJ5YW5nbWluZ3l1LnRvcCIsCiJwYXRoIjogIi8iLAoidGxzIjogInRscyIKfQo=
    // 获取一个可供画图的DC，我这里就直接用桌面算了
          HDC hdc = GetWindowDC( GetDesktopWindow() );
