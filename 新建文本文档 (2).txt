@@ -1,3 +1,117 @@
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "1.1.1.1"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 8,
+        "enabled": false
+      },
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.yangmingyu.top",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "encryption": "",
+                "flow": "",
+                "id": "c6c83f00-d8f0-11ed-afa1-0242ac120002",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "",
+          "serverName": "yangmingyu.top"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "yangmingyu.top"
+          },
+          "path": "/i2N6rnX"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "routing": {
+    "domainMatcher": "mph",
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53",
+        "type": "field"
+      }
+    ]
+  }
+}
+
    vmess://ewoidiI6ICIyIiwKInBzIjogIjIzM3YyLmNvbV95YW5nbWluZ3l1LnRvcCIsCiJhZGQiOiAieWFuZ21pbmd5dS50b3AiLAoicG9ydCI6ICI0NDMiLAoiaWQiOiAiOGNjNDk0MzktY2JiNy00YzZiLWFiYTUtMzAyYzc0YWEyOGUzIiwKImFpZCI6ICIwIiwKIm5ldCI6ICJ3cyIsCiJ0eXBlIjogIm5vbmUiLAoiaG9zdCI6ICJ5YW5nbWluZ3l1LnRvcCIsCiJwYXRoIjogIi8iLAoidGxzIjogInRscyIKfQo=
    // 获取一个可供画图的DC，我这里就直接用桌面算了
          HDC hdc = GetWindowDC( GetDesktopWindow() );
@@ -29,6 +143,7 @@
          // 画个(0,600)到(800,0)的直线看看
          MoveToEx( hdc, 0, 600, NULL );
          LineTo( hdc, 800, 0 );
+
 
          // 在(700,500)处画个黄点，不过这个点只有一像素大小，你细细的看才能找到
          SetPixel( hdc, 700, 500, RGB(255,255,0) );
